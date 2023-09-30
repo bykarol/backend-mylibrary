@@ -1,16 +1,19 @@
 const router = require("express").Router()
 const { 
   getAllBooks, 
-  getAllUsers, 
   getBookbyId, 
-  getUserbyId,
-  createNewUser,
   createNewBook,
   updateBookbyId,
-  updateUserbyId,
   deleteBookbyId,
+} = require("../controllers/bookControllers")
+
+const { 
+  getAllUsers, 
+  getUserbyId,
+  createNewUser,
+  updateUserbyId,
   deleteUserbyId
-} = require("../controllers")
+} = require("../controllers/userControllers")
 
 router.get("/", (req,res)=>{res.status(500).send({
   status: "ok",
