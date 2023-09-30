@@ -57,6 +57,27 @@ const createNewBook = async (req, res) => {
   }
 }
 
+const updateBookbyId = async (req, res) => {
+  const bookId = new ObjectId(req.params.id);
+  const book = {
+    "title": req.body.title,
+    "authors": req.body.authors,
+    "coverImg": req.body.coverImg,
+    "description": req.body.description,
+    "published":req.body.published,
+    "publisher": req.body.publisher,
+    "userid": req.body.userid
+  }
+  try {
+    const response = await (await getDatabase()).db().collection("books").replaceOne({ _id: bookId }, book);
+    if (response.modifiedCount > 0) {
+      res.status(202).json(book)
+    }     
+  } catch (error) {
+    res.status(500).json(response.error || "Some error ocurred while updating the book.");
+  }  
+}
+
 const deleteBookbyId = async (req, res) => {
   const bookId = new ObjectId(req.params.id);
   const response = await (await getDatabase()).db().collection("books").deleteOne({ _id: bookId });
@@ -120,6 +141,24 @@ const createNewUser = async (req, res) => {
   }
 }
 
+const updateUserbyId = async (req, res) => {
+  const userId = new ObjectId(req.params.id);
+  const user = {
+    "name": req.body.name,
+    "lastname": req.body.lastname,
+    "email": req.body.email,
+    "age": req.body.age
+  }
+  try {
+    const response = await (await getDatabase()).db().collection("users").replaceOne({ _id: userId }, user);
+    if (response.modifiedCount > 0) {
+      res.status(202).json(user)
+    }     
+  } catch (error) {
+   res.status(500).json(response.error || "Some error ocurred while updating the user.");
+  }
+}
+
 const deleteUserbyId = async (req, res) => {
   const userId = new ObjectId(req.params.id);
   const response = await (await getDatabase()).db().collection("users").deleteOne({ _id: userId });
@@ -137,6 +176,8 @@ module.exports = {
   getUserbyId,
   createNewUser,
   createNewBook,
+  updateBookbyId,
+  updateUserbyId,
   deleteBookbyId,
   deleteUserbyId
 }

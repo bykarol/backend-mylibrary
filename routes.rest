@@ -22,6 +22,20 @@ Content-Type: application/json
   "userid": "65181c77293b224ebb664609"
 }
 
+### Update book
+PUT http://localhost:4000/books/update/651838a84bb445cde7bde7de HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Around the World in Eighty Days Annotated",
+  "authors": "Jules Verne",
+  "coverImg": "http://books.google.com/books/content?id=bNdyzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+  "description": "Around the World in Eighty Days is an adventure novel by the French writer Jules Verne, first published in French in 1872. In the story, Phileas Fogg of London and his newly employed French valet Passepartout attempt to circumnavigate the world in 80 days on a £20,000 wager (£2,242,900 in 2019)set by his friends at the Reform Club. It is one of Verne's most acclaimed works.",
+  "published": "2021-05-15",
+  "publisher": "Independently Published",
+  "userid": "65181c77293b224ebb664609"
+}
+
 ### Delete book
 DELETE http://localhost:4000/books/delete/6518954affe5e61aad3ac194 HTTP/1.1
 
@@ -40,6 +54,17 @@ Content-Type: application/json
   "lastname": "Oviedo",
   "email": "martin@mail.com",
   "age": 40
+}
+
+### Update user
+PUT http://localhost:4000/users/update/65181c77293b224ebb664609
+Content-Type: application/json
+
+{
+  "name": "Karol",
+  "lastname": "Bracho",
+  "email": "brachokarol.sud@gmail.com",
+  "age": 36
 }
 
 ### Delete user
