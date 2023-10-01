@@ -1,4 +1,5 @@
 const router = require("express").Router()
+
 const { 
   getAllBooks, 
   getBookbyId, 
@@ -14,6 +15,8 @@ const {
   updateUserbyId,
   deleteUserbyId
 } = require("../controllers/userControllers")
+
+router.use("/", require("./swagger"))
 
 router.get("/", (req,res)=>{res.status(500).send({
   status: "ok",

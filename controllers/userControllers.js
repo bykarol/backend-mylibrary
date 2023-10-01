@@ -3,6 +3,7 @@ const ObjectId = require("mongodb").ObjectId;
 
 // users controllers
 const getAllUsers = async (req, res) => {
+  //#swagger.tags=["users"]
   try {
     const result = await (await getDatabase()).db().collection('users').find()
     result.toArray().then((users)=>{
@@ -18,6 +19,7 @@ const getAllUsers = async (req, res) => {
 }
 
 const getUserbyId = async(req, res)=>{
+  //#swagger.tags=["users"]
   const userId = new ObjectId(req.params.id);
   try {
     const result = await (await getDatabase()).db().collection("users").find({ _id: userId });
@@ -35,6 +37,7 @@ const getUserbyId = async(req, res)=>{
 }
 
 const createNewUser = async (req, res) => {
+  //#swagger.tags=["users"]
   const user = {
   "name": req.body.name,
   "lastname": req.body.lastname,
@@ -55,6 +58,7 @@ const createNewUser = async (req, res) => {
 }
 
 const updateUserbyId = async (req, res) => {
+  //#swagger.tags=["users"]
   const userId = new ObjectId(req.params.id);
   const user = {
     "name": req.body.name,
@@ -73,6 +77,7 @@ const updateUserbyId = async (req, res) => {
 }
 
 const deleteUserbyId = async (req, res) => {
+  //#swagger.tags=["users"]
   const userId = new ObjectId(req.params.id);
   try {
     const response = await (await getDatabase()).db().collection("users").deleteOne({ _id: userId });

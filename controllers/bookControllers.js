@@ -3,6 +3,7 @@ const ObjectId = require("mongodb").ObjectId;
 
 // Books controllers
 const getAllBooks = async (req, res) => {
+  //#swagger.tags=["books"]
   try {
     const result = await (await getDatabase()).db().collection('books').find();
     result.toArray().then((books) => {
@@ -18,6 +19,7 @@ const getAllBooks = async (req, res) => {
 }
 
 const getBookbyId = async (req, res) => {
+  //#swagger.tags=["books"]
   const bookId = new ObjectId(req.params.id);
   try {
     const result = await (await getDatabase()).db().collection("books").find({ _id: bookId });
@@ -35,6 +37,7 @@ const getBookbyId = async (req, res) => {
 }
 
 const createNewBook = async (req, res) => {
+  //#swagger.tags=["books"]
   const book = {
     "title": req.body.title,
     "authors": req.body.authors,
@@ -58,6 +61,7 @@ const createNewBook = async (req, res) => {
 }
 
 const updateBookbyId = async (req, res) => {
+  //#swagger.tags=["books"]
   const bookId = new ObjectId(req.params.id);
   const book = {
     "title": req.body.title,
@@ -83,6 +87,7 @@ const updateBookbyId = async (req, res) => {
 }
 
 const deleteBookbyId = async (req, res) => {
+  //#swagger.tags=["books"]
   const bookId = new ObjectId(req.params.id);
   try {
     const response = await (await getDatabase()).db().collection("books").deleteOne({ _id: bookId });
