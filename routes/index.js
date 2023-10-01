@@ -16,6 +16,8 @@ const {
   deleteUserbyId
 } = require("../controllers/userControllers")
 
+const { validateBooks, validateUsers, validateParams } = require("../validation/isValid")
+
 router.use("/", require("./swagger"))
 
 router.get("/", (req,res)=>{res.status(500).send({
@@ -26,16 +28,16 @@ router.get("/", (req,res)=>{res.status(500).send({
 
 // books collection routes
 router.get("/books", getAllBooks)
-router.get("/books/book/:id", getBookbyId)
-router.post("/books/newbook", createNewBook)
-router.put("/books/update/:id", updateBookbyId);
-router.delete("/books/delete/:id", deleteBookbyId)
+router.get("/books/book/:id", validateParams, getBookbyId)
+router.post("/books/newbook", validateBooks, createNewBook)
+router.put("/books/update/:id", validateParams, validateBooks, updateBookbyId);
+router.delete("/books/delete/:id", validateParams, deleteBookbyId)
 
 // users collection routes
 router.get("/users", getAllUsers)
-router.get("/users/user/:id", getUserbyId)
-router.post("/users/newuser", createNewUser)
-router.put("/users/update/:id", updateUserbyId);
-router.delete("/users/delete/:id", deleteUserbyId)
+router.get("/users/user/:id", validateParams, getUserbyId)
+router.post("/users/newuser", validateUsers, createNewUser)
+router.put("/users/update/:id",validateUsers, validateParams, updateUserbyId);
+router.delete("/users/delete/:id", validateParams, deleteUserbyId)
 
 module.exports = router

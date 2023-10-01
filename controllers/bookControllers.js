@@ -45,7 +45,7 @@ const createNewBook = async (req, res) => {
     "description": req.body.description,
     "published": req.body.published,
     "publisher": req.body.publisher,
-    "userid": req.body.userId
+    "userid": req.body.userid
   }
   try {
     const response = await (await getDatabase()).db().collection("books").insertOne(book);
