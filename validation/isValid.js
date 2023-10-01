@@ -21,7 +21,7 @@ const userSchema = Joi.object({
     .integer()
     .required()
     .min(1)
-    .max(2)
+    .max(99)
     .positive()
 });
 
