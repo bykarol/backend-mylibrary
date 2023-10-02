@@ -5,10 +5,11 @@
     "description": "App for book-lovers",
     "version": "1.0.0"
   },
-  "host": "localhost:4000",
+  "host": "mylibrary-dg08.onrender.com/",
   "basePath": "/",
   "schemes": [
-    "http"
+    "http",
+    "https"
   ],
   "paths": {
     "/": {

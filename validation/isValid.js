@@ -23,6 +23,7 @@ const userSchema = Joi.object({
     .min(1)
     .max(99)
     .positive()
+    .error(new Error('Not valid age'))
 });
 
 const bookSchema = Joi.object({
