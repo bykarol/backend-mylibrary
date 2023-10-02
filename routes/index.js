@@ -18,8 +18,6 @@ const {
 
 const { validateBooks, validateUsers, validateParams } = require("../validation/isValid")
 
-router.use("/", require("./swagger"))
-
 router.get("/", (req,res)=>{res.status(500).send({
   status: "ok",
   message: "Home Page",
@@ -39,5 +37,12 @@ router.get("/users/user/:id", validateParams, getUserbyId)
 router.post("/users/newuser", validateUsers, createNewUser)
 router.put("/users/update/:id",validateUsers, validateParams, updateUserbyId);
 router.delete("/users/delete/:id", validateParams, deleteUserbyId)
+
+const swaggerUi = require("swagger-ui-express")
+const swaggerDocument = require("../swagger.json")
+
+router.use("/api-docs", swaggerUi.serve)
+router.get("/api-docs", swaggerUi.setup(swaggerDocument))
+
 
 module.exports = router
