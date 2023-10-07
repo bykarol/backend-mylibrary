@@ -3,7 +3,7 @@ const { MongoClient }= require("mongodb")
 
 let database
 const initDb = async (callback) => {
-  const client = new MongoClient(process.env.MONGODB_URL)
+  const client = new MongoClient(process.env.MONGODB_URI)
   try {
   await client.connect()
   database = client
